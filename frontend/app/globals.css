@@ -1,0 +1,109 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-schibsted-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-schibsted-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-signal: var(--signal);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/*
+ * Buildruntime palette (see the brand guide in buildruntime/buildruntime):
+ * Ink #0E0F11, Graphite #1F2125, Stone #6B6F76, Ash #9EA2A9,
+ * Rule #E3E2DE / #26282C, Paper #F6F5F2, Signal #E5482D.
+ * Signal is the only accent: focus, errors, and the one thing on a page that needs attention.
+ */
+:root {
+  --background: #f6f5f2;
+  --foreground: #0e0f11;
+  --card: #fbfaf8;
+  --card-foreground: #0e0f11;
+  --popover: #fbfaf8;
+  --popover-foreground: #0e0f11;
+  --primary: #0e0f11;
+  --primary-foreground: #f6f5f2;
+  --secondary: #ecebe7;
+  --secondary-foreground: #0e0f11;
+  --muted: #ecebe7;
+  --muted-foreground: #6b6f76;
+  --accent: #ecebe7;
+  --accent-foreground: #0e0f11;
+  --destructive: #c2381f;
+  --border: #e3e2de;
+  --input: #d6d5d0;
+  --ring: #e5482d;
+  --signal: #e5482d;
+  --radius: 0.375rem;
+}
+
+.dark {
+  --background: #0e0f11;
+  --foreground: #f6f5f2;
+  --card: #16171a;
+  --card-foreground: #f6f5f2;
+  --popover: #1f2125;
+  --popover-foreground: #f6f5f2;
+  --primary: #f6f5f2;
+  --primary-foreground: #0e0f11;
+  --secondary: #1f2125;
+  --secondary-foreground: #f6f5f2;
+  --muted: #1f2125;
+  --muted-foreground: #9ea2a9;
+  --accent: #1f2125;
+  --accent-foreground: #f6f5f2;
+  --destructive: #e5482d;
+  --border: #26282c;
+  --input: #34363b;
+  --ring: #e5482d;
+  --signal: #e5482d;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  html {
+    @apply font-sans;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-heading font-medium tracking-[-0.02em];
+  }
+}
