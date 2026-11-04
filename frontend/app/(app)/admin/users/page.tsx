@@ -57,7 +57,7 @@ export default async function UsersPage({ searchParams }: PageProps<"/admin/user
             <TableRow>
               <TableHead>User</TableHead>
               <TableHead>Role</TableHead>
-              <TableHead>Status</TableHead>
+              <TableHead className="hidden sm:table-cell">Status</TableHead>
               <TableHead className="hidden lg:table-cell">Joined</TableHead>
               <TableHead className="hidden lg:table-cell">Last sign-in</TableHead>
               <TableHead className="w-12">
@@ -82,14 +82,25 @@ export default async function UsersPage({ searchParams }: PageProps<"/admin/user
                       <span className="font-normal text-muted-foreground"> (you)</span>
                     )}
                   </div>
-                  <div className="text-xs text-muted-foreground">{user.email}</div>
+                  <div
+                    className="max-w-44 truncate text-xs text-muted-foreground sm:max-w-none"
+                    title={user.email}
+                  >
+                    {user.email}
+                  </div>
+                  {/* On phones the Status column is hidden, so that the actions stay in view. */}
+                  {!user.is_active && (
+                    <Badge variant="outline" className="mt-1 sm:hidden">
+                      Deactivated
+                    </Badge>
+                  )}
                 </TableCell>
                 <TableCell>
                   <Badge variant={user.role === "admin" ? "default" : "secondary"}>
                     {user.role}
                   </Badge>
                 </TableCell>
-                <TableCell>
+                <TableCell className="hidden sm:table-cell">
                   {user.is_active ? (
                     <span className="text-sm">Active</span>
                   ) : (

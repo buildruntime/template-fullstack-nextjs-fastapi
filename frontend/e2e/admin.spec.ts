@@ -56,7 +56,7 @@ test("deactivating a user signs them out and blocks sign-in", async ({ page, bro
   await expect(
     page.getByText("Hedy Lamarr: Account deactivated and signed out everywhere."),
   ).toBeVisible();
-  await expect(rowFor(page, email).getByText("Deactivated")).toBeVisible();
+  await expect(rowFor(page, email)).toContainText("Deactivated");
 
   await userPage.goto("/settings");
   await expect(userPage).toHaveURL(/\/sign-in\?reason=expired/);
